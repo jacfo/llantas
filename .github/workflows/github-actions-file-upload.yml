@@ -30,8 +30,11 @@ jobs:
         run: |
           python script.py
 
-      - name: Save Updated Excel File as Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: CARMOTION_GOMMAS_ACTUALIZADO
-          path: CARMOTION_GOMMAS_ACTUALIZADO.xlsx
+      - name: Guardar Excel Actualizado en el Repositorio
+        run: |
+          cp CARMOTION_GOMMAS_ACTUALIZADO.xlsx CARMOTION_GOMMAS_ACTUALIZADO.xlsx
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add CARMOTION_GOMMAS_ACTUALIZADO.xlsx
+          git commit -m "Subiendo archivo actualizado automáticamente"
+          git push
