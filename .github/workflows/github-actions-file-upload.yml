@@ -14,11 +14,9 @@ jobs:
         run: |
           if [ ! -f "CARMOTION_GOMMAS.xlsx" ]; then
             echo "❌ El archivo CARMOTION_GOMMAS.xlsx no existe en el repositorio."
-              exit 1
-            else
-              echo "✅ Archivo encontrado: CARMOTION_GOMMAS.xlsx"
-            fi
-
+            exit 1
+          else
+            echo "✅ Archivo encontrado: CARMOTION_GOMMAS.xlsx"
       
       - name: Set Up Python
         uses: actions/setup-python@v2
@@ -32,14 +30,12 @@ jobs:
         run: |
           python script.py
 
-      - name: Guardar Excel Actualizado en el Repositorio
-        run: |
-          
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add CARMOTION_GOMMAS_ACTUALIZADO.xlsx
-          git commit -m "Subiendo archivo actualizado automáticamente"
-          git push
+      - name: Subir archivo actualizado como artefacto
+        uses: actions/upload-artifact@v2
+        with:
+          name: CARMOTION_GOMMAS_ACTUALIZADO
+          path: CARMOTION_GOMMAS_ACTUALIZADO.xlsx
+          retention-days: 1
 
       - name: Eliminar archivo original
         run: |
