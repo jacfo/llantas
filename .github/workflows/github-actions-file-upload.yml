@@ -14,9 +14,11 @@ jobs:
         run: |
           if [ ! -f "CARMOTION_GOMMAS.xlsx" ]; then
             echo "❌ El archivo CARMOTION_GOMMAS.xlsx no existe en el repositorio."
-            exit 1
-          else
-            echo "✅ Archivo encontrado: CARMOTION_GOMMAS.xlsx"
+              exit 1
+            else
+              echo "✅ Archivo encontrado: CARMOTION_GOMMAS.xlsx"
+            fi
+
       
       - name: Set Up Python
         uses: actions/setup-python@v2
