@@ -30,16 +30,15 @@ jobs:
         run: |
           python script.py
 
-      - name: Subir archivo actualizado como artefacto
-        uses: actions/upload-artifact@v2
-        with:
-          name: CARMOTION_GOMMAS_ACTUALIZADO
-          path: CARMOTION_GOMMAS_ACTUALIZADO.xlsx
-          retention-days: 1
-
-      - name: Eliminar archivo original
+      - name: Subir archivo actualizado al repositorio
         run: |
-          rm CARMOTION_GOMMAS.xlsx
-          git add .
-          git commit -m "Eliminando archivo original para mantener el repositorio limpio"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add CARMOTION_GOMMAS_ACTUALIZADO.xlsx
+          git commit -m "Subiendo archivo actualizado automáticamente"
           git push
+
+      - name: Generar URL de descarga temporal
+        run: |
+          REPO_URL="https://github.com/${{ github.repository }}/raw/${{ github.ref_name }}/CARMOTION_GOMMAS_ACTUALIZADO.xlsx"
+          echo "La URL temporal para descargar el archivo es: $REPO_URL"
