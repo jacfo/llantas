@@ -40,3 +40,10 @@ jobs:
           git add CARMOTION_GOMMAS_ACTUALIZADO.xlsx
           git commit -m "Subiendo archivo actualizado automáticamente"
           git push
+
+      - name: Eliminar archivo original
+        run: |
+          rm CARMOTION_GOMMAS.xlsx
+          git add .
+          git commit -m "Eliminando archivo original para mantener el repositorio limpio"
+          git push
