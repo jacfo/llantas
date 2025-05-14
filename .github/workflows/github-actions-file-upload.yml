@@ -43,3 +43,10 @@ jobs:
         run: |
           REPO_URL="https://github.com/${{ github.repository }}/raw/${{ github.ref_name }}/CARMOTION_GOMMAS_ACTUALIZADO.xlsx"
           echo "La URL temporal para descargar el archivo es: $REPO_URL"
+
+      - name: Eliminar archivo original
+        run: |
+          rm CARMOTION_GOMMAS.xlsx
+          git add .
+          git commit -m "Eliminado archivo original para mantener el repositorio limpio"
+          git push
