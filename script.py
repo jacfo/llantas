@@ -31,7 +31,7 @@ if response.status_code == 200:
 
     print("Extracción completada. Datos guardados en 'datos_extraidos.csv'.")
 
-    ########################3Leer el archivo de Excel###########################
+    ########################Leer el archivo de Excel###########################
     excel_path = "CARMOTION_GOMMAS.xlsx"
     xls = pd.ExcelFile(excel_path)
     df_excel = pd.read_excel(xls, sheet_name="CAR MOT", header=1)
