@@ -19,7 +19,7 @@ jobs:
             echo "✅ Archivo encontrado: CARMOTION_GOMMAS.xlsx"
       
       - name: Set Up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
@@ -31,7 +31,7 @@ jobs:
           python script.py
 
       - name: Save Updated Excel File as Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: CARMOTION_GOMMAS_ACTUALIZADO
           path: CARMOTION_GOMMAS_ACTUALIZADO.xlsx
