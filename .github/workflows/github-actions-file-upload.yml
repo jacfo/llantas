@@ -46,7 +46,7 @@ jobs:
 
       - name: Eliminar archivo original
         run: |
-          rm CARMOTION_GOMMAS.xlsx CARMOTION_GOMMAS_ACTUALIZADO.xlsx datos_extraidos.csv
+          rm CARMOTION_GOMMAS.xlsx datos_extraidos.csv
           git add .
           git commit -m "Eliminado archivo original para mantener el repositorio limpio"
           git push
